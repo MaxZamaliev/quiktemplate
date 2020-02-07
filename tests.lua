@@ -6,7 +6,9 @@
 -------------------------------------------------------------------------------------------------------------------------------------------
 --
 Version	 	 = "test"
+
 Debug 		 = true
+global_dbPath    = getScriptPath().."\\tests\\data\\"
 
 dofile(getScriptPath().."\\modules\\modules.lua")
 dofile(getScriptPath().."\\include\\OnInit.lua")
@@ -22,6 +24,7 @@ function main()
 
 	dofile(getScriptPath().."\\tests\\bond.lua")
 	dofile(getScriptPath().."\\tests\\stock.lua")
+	dofile(getScriptPath().."\\tests\\futures.lua")
 
 	log.Info("Tests result - "..testOK)
 	if testOK == 'failed' then

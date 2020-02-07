@@ -29,6 +29,7 @@
     function bond.getQuotesOFFER(seccode)   - возвращаем массив с заявками на прожаду из стакана цен
     function bond.getIncomes(seccode)       - возвращает массив с информацией о денежном потоке облигации (вычисляется из даных в csv файле 'dbPath.."\\"..csvfile')
     function bond.getSecCodesList()	    - получить seccode список всех облигаций из dbPath..csvfile
+    function bond.subscribe(seccode)	    - подписаться на seccode
     function bond.subscribeAll()	    - подписаться на все облигации из csvfile
     function bond.unsubscribeAll()          - отписаться от облигций из csvfile
 ]]
@@ -353,6 +354,11 @@ local bond = {}
 		end
 		log.Debug("--- bond.getSecCodesList() = "..mytable.tostring(bondsList))
 		return bondsList
+	end
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+	function bond.subscribe(seccode)
+			local res = Subscribe_Level_II_Quotes(classcode,seccode)
+			log.Debug("bond.subscribeAll(): "..seccode.." "..tostring(res))
 	end
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 	function bond.subscribeAll()

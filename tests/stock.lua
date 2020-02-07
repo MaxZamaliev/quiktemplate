@@ -137,6 +137,11 @@ function stock.test()
 		testOK = "failed"
 	end
 
+	if testOK == "ok" then
+		log.Info("stock module test "..testOK)
+		testOK = testOK_tmp
+	end
+
 end
 
 stock.test()

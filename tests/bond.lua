@@ -10,6 +10,8 @@ function bond.test()
 	testOK = "ok"
 	local seccode = "RU000A0ZYKH5"
 
+	bond.subscribe(seccode)
+	sleep(1000)
 
 -- bond.checkStatus(seccode)      - true - если облигация нам подходит
 	if bond.checkStatus(seccode) == nil then
@@ -176,7 +178,6 @@ function bond.test()
 		log.Info("bond module test "..testOK)
 		testOK = testOK_tmp
 	end
-
 
 end
 bond.test()
