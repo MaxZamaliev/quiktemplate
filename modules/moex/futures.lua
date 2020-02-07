@@ -6,7 +6,27 @@
 -------------------------------------------------------------------------------------------------------------------------------------------
 --
 --[[
-
+	function futures.subscribe(seccode)	 - подписаться на получение котировок для seccode
+	function futures.checkStatus(seccode)	 - true если инструмент нам подходит
+	function futures.isTrading(seccode)	 - true еслиинструмент сейчас торгуется
+	function futures.getParam(seccode,param) - получить параметр (используется другими функциями этого модуля)
+	function futures.getShortName(seccode)	 - краткое наименование
+	function futures.getMatDate(seccode) 	 - дата экспирации
+	function futures.getDaysLeft(seccode)    - дней до экспирации
+	function futures.getSellDepo(seccode)	 - ГО при продаже
+	function futures.getBuyDepo(seccode)     - ГО при покупке
+	function futures.getPriceStep(seccode)   - шаг цены
+	function futures.getLotSize(seccode)     - размер лота
+	function futures.getBIDPrice(seccode)    - лучша цена предложения
+	function futures.getOFFERPrice(seccode)  - лучшая цена спроса
+	function futures.getOFFERVolume(seccode) - доступный объём по лучшей цене предложения
+	function futures.getBIDVolume(seccode)   - доступный объем по лучшей цене спроса
+	function futures.getLastPrice(seccode)   - цена последней сделки
+	function futures.getLastVolume(seccode)  - объем последней сделки
+	function futures.getClosePrice(seccode)  - цена закрытия
+	function futures.getQuotes(seccode)      - получить стакан
+	function futures.getQuotesBID(seccode)   - получить BID часть стакана
+	function futures.getQuotesOFFER(seccode) - получить OFFER часть стакана
 ]]
 
 local futures={}
