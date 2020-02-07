@@ -73,7 +73,6 @@ local stock = {}
 		if stock.checkStatus(seccode) then
 			local val
 			local res = getParamEx(classcode,seccode,param)
-			log.Error(param..": "..mytable.tostring(res))
 			if res.param_type == "1" then
 				val = tonumber(res.param_value)
 				log.Debug("stock.getParam("..seccode..","..param..") = "..val)
