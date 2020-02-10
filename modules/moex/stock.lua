@@ -32,6 +32,8 @@
 
 local stock = {}
 	local classcode = "TQBR"
+	bond2 = require "bond"
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 	function stock.subscribe(seccode)
@@ -271,7 +273,7 @@ local stock = {}
 			return nil
 		end
 
-		if ( (dt["hour"] == 18) and (dt["min"] >= 40) and (dt["min"] <= 45) ) then
+		if ( (dt["hour"] == 18) and (dt["min"] >= 40) and (dt["min"] <= 50) ) then
 			log.Debug("stock.isAuctionTime() = true")
 			return true
 		end
