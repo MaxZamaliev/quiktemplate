@@ -113,29 +113,15 @@ function futures.test()
 	end
 
 -- futures.getQuotesBID(seccode)     - возвращаем массив (преобразованный - нумерация с середины стакана) с заявками на покупку из стакана цен
-	if futures.getBIDPrice(seccode) > 0 then
-		local bids = futures.getQuotesBID(seccode)
-		if  bids[1].price ~= futures.getBIDPrice(seccode) then
-			log.Info("futures.getQuotesBID("..seccode..") price - failed")
-			testOK = "failed"
-		end
-		if  bids[1].volume ~= futures.getBIDVolume(seccode) then
-			log.Info("futures.getQuotesBID("..seccode..") volume - failed")
-			testOK = "failed"
-		end
+	if futures.getQuotesBID(seccode) == nil then
+		log.Info("futures.getQuotesBID("..seccode..") - failed")
+		testOK = "failed"
 	end
 
 -- futures.getQuotesOFFER(seccode)   - возвращаем массив с заявками на продажу из стакана цен
-	if futures.getOFFERPrice(seccode) > 0 then
-		local offers = futures.getQuotesOFFER(seccode)
-		if  offers[1].price ~= futures.getOFFERPrice(seccode) then
-			log.Info("futures.getQuotesOFFER("..seccode..") price - failed")
-			testOK = "failed"
-		end
-		if  offers[1].volume ~= futures.getOFFERVolume(seccode) then
-			log.Info("futures.getQuotesOFFER("..seccode..") volume - failed")
-			testOK = "failed"
-		end
+	if futures.getQuotesOFFER(seccode) == nil then
+		log.Info("futures.getQuotesOFFER("..seccode..") - failed")
+		testOK = "failed"
 	end
 
 	if testOK == "ok" then

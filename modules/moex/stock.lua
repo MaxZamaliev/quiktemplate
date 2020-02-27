@@ -177,7 +177,7 @@ local stock = {}
 			return nil
 		end
 		local quotes = getQuoteLevel2Ex(classcode,seccode)
---		log.Debug("stock.getDOM(): Quote = "..mytable.tostring(quotes))
+--log.Debug("stock.getQuotes(): Quote = "..mytable.tostring(quotes))
 		if  quotes == nil then
 			log.Error("--- stock.getQuotes("..seccode..") = nil : Не удалось получить стакан")
 			return nil

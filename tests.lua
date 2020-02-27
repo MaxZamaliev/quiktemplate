@@ -25,6 +25,7 @@ function main()
 	dofile(getScriptPath().."\\tests\\bond.lua")
 	dofile(getScriptPath().."\\tests\\stock.lua")
 	dofile(getScriptPath().."\\tests\\futures.lua")
+	dofile(getScriptPath().."\\tests\\option.lua")
 
 	log.Info("Tests result - "..testOK)
 	if testOK == 'failed' then

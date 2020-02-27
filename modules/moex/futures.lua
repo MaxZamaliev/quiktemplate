@@ -10,6 +10,7 @@
 	function futures.checkStatus(seccode)	 - true если инструмент нам подходит
 	function futures.isTrading(seccode)	 - true еслиинструмент сейчас торгуется
 	function futures.getParam(seccode,param) - получить параметр (используется другими функциями этого модуля)
+	function futures.getSettlePrice(seccode) - теоретическая цена
 	function futures.getShortName(seccode)	 - краткое наименование
 	function futures.getMatDate(seccode) 	 - дата экспирации
 	function futures.getDaysLeft(seccode)    - дней до экспирации
@@ -86,6 +87,12 @@ local futures={}
 			log.Debug("futures.getParam("..seccode..","..param..") = nil : futures.checkStatus() == nil")
 			return nil
 		end
+	end
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+	function futures.getSettlePrice(seccode)
+		local val = futures.getParam(seccode,"SETTLEPRICE")
+		log.Debug("futures.getSettlePrice("..seccode..") = "..tostring(val))
+		return val
 	end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 	function futures.getShortName(seccode)

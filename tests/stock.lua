@@ -11,6 +11,8 @@ function stock.test()
 	testOK = "ok"
 	local seccode = "NLMK"
 
+	stock.subscribe(seccode)
+
 -- stock.checkStatus(seccode)      - true - если акция нам подходит
 	if stock.checkStatus(seccode) == nil then
 		log.Info("stock.checkStatus("..seccode..") - failed")
@@ -88,29 +90,15 @@ function stock.test()
 	end
 
 -- stock.getQuotesBID(seccode)     - возвращаем массив (преобразованный - нумерация с середины стакана) с заявками на покупку из стакана цен
-	if stock.getBIDPrice(seccode) > 0 then
-		local bids = stock.getQuotesBID(seccode)
-		if  bids[1].price ~= stock.getBIDPrice(seccode) then
-			log.Info("stock.getQuotesBID("..seccode..") price - failed")
-			testOK = "failed"
-		end
-		if  bids[1].volume ~= stock.getBIDVolume(seccode) then
-			log.Info("stock.getQuotesBID("..seccode..") volume - failed")
-			testOK = "failed"
-		end
+	if stock.getQuotesBID(seccode) == nil then
+		log.Info("stock.getQuotesBID("..seccode..") - failed")
+		testOK = "failed"
 	end
 
 -- stock.getQuotesOFFER(seccode)   - возвращаем массив с заявками на продажу из стакана цен
-	if stock.getOFFERPrice(seccode) > 0 then
-		local offers = stock.getQuotesOFFER(seccode)
-		if  offers[1].price ~= stock.getOFFERPrice(seccode) then
-			log.Info("stock.getQuotesOFFER("..seccode..") price - failed")
-			testOK = "failed"
-		end
-		if  offers[1].volume ~= stock.getOFFERVolume(seccode) then
-			log.Info("stock.getQuotesOFFER("..seccode..") volume - failed")
-			testOK = "failed"
-		end
+	if stock.getQuotesOFFER(seccode) == nil then
+		log.Info("stock.getQuotesOFFER("..seccode..") - failed")
+		testOK = "failed"
 	end
 
 --	function stock.getClosePrice(seccode)	     - Цена периода закрытия
