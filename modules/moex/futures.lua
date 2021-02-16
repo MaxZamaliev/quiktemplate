@@ -7,6 +7,7 @@
 --
 --[[
 	function futures.subscribe(seccode)	 - подписатьс€ на получение котировок дл€ seccode
+	function futures.unsubscribe(seccode)	 - подписатьс€ на получение котировок дл€ seccode
 	function futures.checkStatus(seccode)	 - true если инструмент нам подходит
 	function futures.isTrading(seccode)	 - true еслиинструмент сейчас торгуетс€
 	function futures.getParam(seccode,param) - получить параметр (используетс€ другими функци€ми этого модул€)
@@ -36,6 +37,11 @@ local futures={}
 	function futures.subscribe(seccode)
 		local res = Subscribe_Level_II_Quotes(classcode,seccode)
 		log.Debug("futures.subscribe("..seccode..") = "..tostring(res))
+	end
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+	function futures.unsubscribe(seccode)
+		local res = Unsubscribe_Level_II_Quotes(classcode,seccode)
+		log.Debug("futures.unsubscribe("..seccode..") = "..tostring(res))
 	end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 	function futures.checkStatus(seccode)
@@ -186,7 +192,7 @@ local futures={}
 			return nil
 		end
 		local quotes = getQuoteLevel2Ex(classcode,seccode)
---		log.Debug("futures.getDOM(): Quote = "..mytable.tostring(quotes))
+--		log.Debug("futures.getQuotes(): quotes = "..mytable.tostring(quotes))
 		if  quotes == nil then
 			log.Error("--- futures.getQuotes("..seccode..") = nil : Ќе удалось получить стакан")
 			return nil
@@ -235,7 +241,8 @@ local futures={}
 			end
 		end
 
-		log.Debug("--- futures.getQuotes("..seccode..") = "..mytable.tostring(newQuotes))
+--		log.Debug("--- futures.getQuotes("..seccode..") = "..mytable.tostring(newQuotes))
+		log.Debug("--- futures.getQuotes("..seccode..") = [array]")
 		return newQuotes
 	end
 -----------------------------------------------------------------------------------------------------------------

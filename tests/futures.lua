@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------------------------------------------------------------------
 --
--- futures.lua - тесты модуля stock
+-- futures.lua - тесты модуля futures
 -- (с)2020 Max Zamaliev <zamal@inbox.ru>
 --
 -------------------------------------------------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ function futures.test()
 
 	futures.subscribe(seccode)
 
--- futures.checkStatus(seccode)      - true - если акция нам подходит
+-- futures.checkStatus(seccode)      - true - если нам подходит
 	if futures.checkStatus(seccode) == nil then
 		log.Info("futures.checkStatus("..seccode..") - failed")
 		testOK = "failed"
@@ -22,7 +22,7 @@ function futures.test()
 -- futures.isTrading(seccode)        - true - торговля seccode разрешена
 	futures.isTrading(seccode)
 
--- futures.getParam(seccode,param)   - получить параметр акции (используется другими функциями этого модуля)
+-- futures.getParam(seccode,param)   - получить параметр (используется другими функциями этого модуля)
 	if futures.getParam(seccode,"LOTSIZE") ~= 100 then
 		log.Info("futures.getParam("..seccode..",'LOTSIZE') - failed")
 		testOK = "failed"
